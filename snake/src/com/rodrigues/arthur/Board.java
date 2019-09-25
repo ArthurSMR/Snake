@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class Board extends JPanel implements ActionListener {
 
@@ -14,6 +16,28 @@ public class Board extends JPanel implements ActionListener {
     private JanelaPrincipal referencia;
 
     public Board() {
+        inGame = true;
+    }
+
+    public void initBoard() {
+        addKeyListener(new TAdapter());
+        System.out.println("Entrou 1");
+        setBackground(Color.black);
+        setFocusable(true);
+        setPreferredSize(new Dimension(referencia.getB_WIDTH(), referencia.getB_HEIGHT()));
+        snake.loadHeadAndDotImages();
+        apple.loadImage();
+        iniciaJogo();
+    }
+
+    public void iniciaJogo() {
+
+        snake.setDots(3);
+        snake.setLocationDots();
+
+        apple.locateApple();
+
+        referencia.turnOnTimer();
         inGame = true;
     }
 
@@ -78,6 +102,37 @@ public class Board extends JPanel implements ActionListener {
 
         Toolkit.getDefaultToolkit().sync();
 
+    }
+
+    public class TAdapter  extends KeyAdapter {
+
+        private Snake snake;
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+            int key = e.getKeyCode();
+
+            if ((key == KeyEvent.VK_LEFT) && (!snake.isRightDirection()))  {
+                snake.setLeftDirection(true);
+                snake.setUpDirection(false);
+                snake.setDownDirection(false);
+            }
+            if ((key == KeyEvent.VK_RIGHT) && (!snake.isLeftDirection()))  {
+                snake.setRightDirection(true);
+                snake.setUpDirection(false);
+                snake.setDownDirection(false);
+            }
+            if ((key == KeyEvent.VK_UP) && (!snake.isDownDirection()))  {
+                snake.setUpDirection(true);
+                snake.setRightDirection(false);
+                snake.setLeftDirection(false);
+            }
+            if ((key == KeyEvent.VK_DOWN) && (!snake.isUpDirection()))  {
+                snake.setDownDirection(true);
+                snake.setRightDirection(false);
+                snake.setLeftDirection(false);
+            }
+        }
     }
 
 

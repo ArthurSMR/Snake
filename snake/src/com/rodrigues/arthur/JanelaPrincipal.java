@@ -21,15 +21,37 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
     private Timer timer;
     private final int  DELAY = 140;
 
+
+    private JMenuBar menuBar;
+    private JMenu menuIniciar;
+    private JMenuItem menuItemIniciar;
+
+    private Board board;
+
     JanelaPrincipal() throws HeadlessException {
         super();
         configuraJanela();
+        criaAdicionaMenu();
+        adicionaOuvinteMenus(this);
         inicializaAdicionaComponentes();
     }
 
     void inicia() {
         this.labelStatus.setText("Snake Game");
         this.setVisible(true);
+    }
+
+    private void criaAdicionaMenu() {
+        menuIniciar = new JMenu("Iniciar");
+
+        menuItemIniciar = new JMenuItem("Iniciar Aqui");
+        menuIniciar.add(menuItemIniciar);
+
+        menuBar = new JMenuBar();
+        menuBar.add(menuIniciar);
+
+        this.setJMenuBar(menuBar);
+
     }
 
     private void configuraJanela() {
@@ -64,16 +86,6 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
         this.add(painelStatus, BorderLayout.SOUTH);
     }
 
-    public void iniciaJogo() {
-
-        snake.setDots(3);
-        snake.setLocationDots();
-
-        apple.locateApple();
-
-        this.turnOnTimer();
-
-    }
 
     public void turnOnTimer() {
 
@@ -86,8 +98,27 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
         timer.stop();
     }
 
+    void adicionaOuvinteMenus(ActionListener ouvinte) {
+        for (Component menuPrincipal : this.getJMenuBar().getComponents()) {
+            if (menuPrincipal  instanceof JMenu) {
+                adicionaOuvinteItemMenu(ouvinte, (JMenu) menuPrincipal);
+            }
+        }
+    }
+
+    private  void adicionaOuvinteItemMenu(ActionListener ouvinte, JMenu menuPrincipal) {
+        for (Component alvo : menuPrincipal.getMenuComponents()) {
+            if(alvo instanceof JMenuItem) {
+                ((JMenuItem)alvo).addActionListener(ouvinte);
+            }
+        }
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == menuItemIniciar) {
+            board.initBoard();
+        }
     }
 
     public int getB_WIDTH() {

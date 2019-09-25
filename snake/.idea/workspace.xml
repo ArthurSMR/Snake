@@ -16,6 +16,7 @@
     </option>
   </component>
   <component name="ProjectId" id="1RIn0Gyh1DzP7siaYn6Y6v64w1i" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -69,10 +70,22 @@
       <option name="presentableId" value="Default" />
       <updated>1569363253003</updated>
       <workItem from="1569363254222" duration="8134000" />
+      <workItem from="1569372258084" duration="2542000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
