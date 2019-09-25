@@ -9,11 +9,11 @@ import java.awt.event.KeyEvent;
 
 public class Board extends JPanel implements ActionListener {
 
-    private Apple apple;
-    private Snake snake;
+    private Apple apple = new Apple();
+    private Snake snake = new Snake();
     private boolean inGame;
 
-    private JanelaPrincipal referencia;
+    private JanelaPrincipal referencia = new JanelaPrincipal();
 
     public Board() {
         inGame = true;
@@ -21,11 +21,15 @@ public class Board extends JPanel implements ActionListener {
 
     public void initBoard() {
         addKeyListener(new TAdapter());
-        System.out.println("Entrou 1");
+
+        System.out.println(inGame);
         setBackground(Color.black);
         setFocusable(true);
         setPreferredSize(new Dimension(referencia.getB_WIDTH(), referencia.getB_HEIGHT()));
+        System.out.println("Entrou 1");
+
         snake.loadHeadAndDotImages();
+
         apple.loadImage();
         iniciaJogo();
     }

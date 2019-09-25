@@ -26,7 +26,7 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
     private JMenu menuIniciar;
     private JMenuItem menuItemIniciar;
 
-    private Board board;
+
 
     JanelaPrincipal() throws HeadlessException {
         super();
@@ -117,6 +117,7 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == menuItemIniciar) {
+            Board board = new Board();
             board.initBoard();
         }
     }

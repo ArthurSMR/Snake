@@ -11,7 +11,7 @@ public class Apple {
 
     private Image appleImage;
 
-    private Snake snake;
+    private Snake snake = new Snake();
 
     public Apple() {
 
