@@ -39,6 +39,10 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
         inicializaAdicionaComponentes();
     }
 
+     /**
+      *
+      * */
+
     void inicia() {
         board.initGame();
     }
@@ -62,6 +66,9 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
 
     }
 
+    /**
+     * Este método configura o tamanho da janela, define o título e determina o método padrão de fechamento do JFrame.
+     */
     private void configuraJanela() {
 
         // tamanho da janela
@@ -84,16 +91,6 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
 
         // texto inicial da  barra
         this.labelStatus  = new JLabel(this.titulo);
-
-        //importante: adiciona o componente de texto ao painel!
-//        this.painelStatus.add(labelStatus);
-
-        //perfumaria em geral
-//        this.painelStatus.setBackground(Color.gray);
-//        this.painelStatus.setBorder(BorderFactory.createEtchedBorder());
-
-        // IMPORTANTE: adiciona o painel a janela!
-//        this.add(painelStatus, BorderLayout.SOUTH);
     }
 
 
@@ -131,7 +128,7 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
         } else if (e.getSource() == menuItemPauseResume) {
             board.pauseResumeGame();
         } else if (e.getSource() == menuItemHelp) {
-            JOptionPane.showMessageDialog(null, "Use keyboard arrow to move the snake.");
+            JOptionPane.showMessageDialog(null, "Use keyboard arrows to play the game.");
         }
     }
 

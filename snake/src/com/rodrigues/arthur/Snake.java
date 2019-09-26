@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.ImageObserver;
 
 public class Snake implements ActionListener {
 
@@ -64,6 +65,46 @@ public class Snake implements ActionListener {
             y[0] += DOT_SIZE;
         }
     }
+
+    public void draw(Graphics g, ImageObserver board) {
+        for  (int z = 0; z < dots; z++) {
+            if (z == 0) {
+                g.drawImage(this.getHead(), x[z], y[z], board);
+            } else {
+                g.drawImage(this.getBall(), x[z], y[z], board);
+            }
+        }
+    }
+
+    public boolean checkCollision(int widthLimit, int heightLimit) {
+
+        for (int z = dots;   z > 0; z--) {
+
+            if ((z > 4) && (x[0] == x[z]) && (y[0] == y[z])) {
+                return false;
+            }
+        }
+
+        if (y[0] >= heightLimit) {
+            return false;
+        }
+
+        if (y[0] < 0) {
+            return false;
+        }
+
+        if (x[0] >= widthLimit) {
+            return false;
+        }
+
+        if (x[0] < 0) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public void incrementDots() { dots += 1; }
 
     public int getDots() {
         return dots;
@@ -127,6 +168,14 @@ public class Snake implements ActionListener {
 
     public void setDownDirection(boolean downDirection) {
         this.downDirection = downDirection;
+    }
+
+    public int getHeadPositionX() {
+        return x[0];
+    }
+
+    public int getHeadPositionY() {
+        return y[0];
     }
 
     @Override
