@@ -1,13 +1,14 @@
 package com.rodrigues.arthur;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class Main {
 
     public static void main(String[] args) {
         try {
-            JanelaPrincipal programa = new JanelaPrincipal();
-            programa.inicia();
+            JFrame programa = new JanelaPrincipal();
+            programa.setVisible(true);
         }
         catch (HeadlessException excecao) {
             imprMsgErroETermina("Programa terminado por  uma HeadLessExpetion no método main()", excecao);

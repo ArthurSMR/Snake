@@ -2,15 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef5af2c9-ff33-417b-b4b1-1afcdb22ce6e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/snake/com/rodrigues/arthur/Apple.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/snake/com/rodrigues/arthur/Apple.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/snake/com/rodrigues/arthur/Board$TAdapter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/snake/com/rodrigues/arthur/Board$TAdapter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/snake/com/rodrigues/arthur/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/snake/com/rodrigues/arthur/Board.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/snake/com/rodrigues/arthur/JanelaPrincipal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/snake/com/rodrigues/arthur/JanelaPrincipal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/snake/com/rodrigues/arthur/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/snake/com/rodrigues/arthur/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/snake/com/rodrigues/arthur/Snake.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/snake/com/rodrigues/arthur/Snake.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/rodrigues/arthur/Apple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/rodrigues/arthur/Apple.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/rodrigues/arthur/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/rodrigues/arthur/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/rodrigues/arthur/JanelaPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/rodrigues/arthur/JanelaPrincipal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/rodrigues/arthur/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/rodrigues/arthur/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/rodrigues/arthur/Snake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/rodrigues/arthur/Snake.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -35,6 +38,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/res" />
+    <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -85,7 +89,8 @@
       <updated>1569363253003</updated>
       <workItem from="1569363254222" duration="8134000" />
       <workItem from="1569372258084" duration="4084000" />
-      <workItem from="1569429142982" duration="1255000" />
+      <workItem from="1569429142982" duration="1379000" />
+      <workItem from="1569455681415" duration="9309000" />
     </task>
     <servers />
   </component>

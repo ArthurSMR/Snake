@@ -7,14 +7,14 @@ public class Apple {
 
     private int apple_x;
     private int apple_y;
-    private final int RAND_POS = 29;
+    private final int RAND_POS = 24;
 
     private Image appleImage;
 
     private Snake snake = new Snake();
 
     public Apple() {
-
+        loadImage();
     }
 
     public void loadImage() {

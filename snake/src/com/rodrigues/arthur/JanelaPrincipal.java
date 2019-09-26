@@ -17,6 +17,7 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
 
     private Snake snake;
     private Apple apple;
+    private Board board;
 
     private Timer timer;
     private final int  DELAY = 140;
@@ -37,8 +38,7 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
     }
 
     void inicia() {
-        this.labelStatus.setText("Snake Game");
-        this.setVisible(true);
+        board.initGame();
     }
 
     private void criaAdicionaMenu() {
@@ -51,6 +51,8 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
         menuBar.add(menuIniciar);
 
         this.setJMenuBar(menuBar);
+        this.board = new Board();
+        this.add(board);
 
     }
 
@@ -63,6 +65,8 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
         //janela no centro do monitor
         this.setLocationRelativeTo(null);
 
+        setTitle("Snake");
+        setLocationRelativeTo(null);
         // impõe que programa TERMINE quando janela for fechada
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
@@ -76,14 +80,14 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
         this.labelStatus  = new JLabel(this.titulo);
 
         //importante: adiciona o componente de texto ao painel!
-        this.painelStatus.add(labelStatus);
+//        this.painelStatus.add(labelStatus);
 
         //perfumaria em geral
-        this.painelStatus.setBackground(Color.gray);
-        this.painelStatus.setBorder(BorderFactory.createEtchedBorder());
+//        this.painelStatus.setBackground(Color.gray);
+//        this.painelStatus.setBorder(BorderFactory.createEtchedBorder());
 
         // IMPORTANTE: adiciona o painel a janela!
-        this.add(painelStatus, BorderLayout.SOUTH);
+//        this.add(painelStatus, BorderLayout.SOUTH);
     }
 
 
@@ -117,8 +121,7 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == menuItemIniciar) {
-            Board board = new Board();
-            board.initBoard();
+            this.inicia();
         }
     }
 

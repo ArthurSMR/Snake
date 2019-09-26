@@ -2,8 +2,10 @@ package com.rodrigues.arthur;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Snake {
+public class Snake implements ActionListener {
 
     private Image ball;
     private Image head;
@@ -23,7 +25,7 @@ public class Snake {
     private boolean downDirection = false;
 
     Snake() {
-
+        loadHeadAndDotImages();
     }
 
     public void loadHeadAndDotImages() {
@@ -125,5 +127,10 @@ public class Snake {
 
     public void setDownDirection(boolean downDirection) {
         this.downDirection = downDirection;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        move();
     }
 }
