@@ -29,14 +29,17 @@ public class Board extends JPanel implements ActionListener {
     private boolean rightDirection = true;
     private boolean upDirection = false;
     private boolean downDirection = false;
-    private boolean inGame = true;
+    private boolean inGame;
 
     private Timer timer;
     private Image ball;
     private Apple apple;
+    private Snake snake;
     private Image head;
 
     public Board() {
+        dots = 0;
+        inGame = false;
         initBoard();
     }
 
@@ -53,34 +56,27 @@ public class Board extends JPanel implements ActionListener {
         ImageIcon iid = new ImageIcon(getClass().getResource("/res/dot.png"));
         ball  = iid.getImage();
 
-//        ImageIcon iia = new ImageIcon(getClass().getResource("/res/apple.png"));
-//        apple  = iia.getImage();
         apple =  new Apple();
-
+        snake = new Snake();
 
         ImageIcon iih = new ImageIcon(getClass().getResource("/res/head.png"));
         head  = iih.getImage();
     }
 
     public void initGame() {
-        if (inGame) {
-            dots = 3;
+        inGame = true;
+        dots = 3;
 
-            for(int z = 0; z < dots; z++) {
-                x[z] = 150 - z * 10;
-                y[z] = 150;
-            }
-
-            apple.locateApple();
-
-            //  we use a timer on a timer to call action perfomed  method fixed delay
-            timer = new Timer(DELAY, this);
-            timer.start();
-        } else {
-            inGame = true;
+        for(int z = 0; z < dots; z++) {
+            x[z] = 150 - z * 10;
+            y[z] = 150;
         }
 
-//        inGame = true;
+        apple.locateApple();
+
+        //  we use a timer on a timer to call action perfomed  method fixed delay
+        timer = new Timer(DELAY, this);
+        timer.start();
     }
 
     @Override
@@ -95,14 +91,14 @@ public class Board extends JPanel implements ActionListener {
 
             for  (int z = 0; z < dots; z++) {
                 if (z == 0) {
-                    g.drawImage(head, x[z], y[z], this);
+                    g.drawImage(snake.getHead(), x[z], y[z], this);
                 } else {
-                    g.drawImage(ball, x[z], y[z], this);
+                    g.drawImage(snake.getBall(), x[z], y[z], this);
                 }
             }
 
             Toolkit.getDefaultToolkit().sync();
-        } else {
+        } else if (dots > 0){
             gameOver(g);
         }
     }
