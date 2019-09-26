@@ -26,6 +26,8 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
     private JMenuBar menuBar;
     private JMenu menuIniciar;
     private JMenuItem menuItemIniciar;
+    private JMenuItem menuItemPauseResume;
+    private JMenuItem menuItemHelp;
 
 
 
@@ -42,10 +44,14 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
     }
 
     private void criaAdicionaMenu() {
-        menuIniciar = new JMenu("Iniciar");
+        menuIniciar = new JMenu("Game");
 
-        menuItemIniciar = new JMenuItem("Iniciar Aqui");
+        menuItemIniciar = new JMenuItem("Start");
+        menuItemPauseResume = new JMenuItem("Pause / Resume");
+        menuItemHelp = new JMenuItem("Help");
         menuIniciar.add(menuItemIniciar);
+        menuIniciar.add(menuItemPauseResume);
+        menuIniciar.add(menuItemHelp);
 
         menuBar = new JMenuBar();
         menuBar.add(menuIniciar);
@@ -122,6 +128,10 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == menuItemIniciar) {
             this.inicia();
+        } else if (e.getSource() == menuItemPauseResume) {
+            board.pauseResumeGame();
+        } else if (e.getSource() == menuItemHelp) {
+            JOptionPane.showMessageDialog(null, "Use keyboard arrow to move the snake.");
         }
     }
 

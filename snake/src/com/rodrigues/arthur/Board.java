@@ -30,6 +30,7 @@ public class Board extends JPanel implements ActionListener {
     private boolean upDirection = false;
     private boolean downDirection = false;
     private boolean inGame;
+    private boolean pause;
 
     private Timer timer;
     private Image ball;
@@ -63,8 +64,18 @@ public class Board extends JPanel implements ActionListener {
         head  = iih.getImage();
     }
 
+    public void pauseResumeGame() {
+        if (pause) {
+            pause = false;
+        } else {
+            pause = true;
+        }
+
+    }
+
     public void initGame() {
         inGame = true;
+        pause = false;
         dots = 3;
 
         for(int z = 0; z < dots; z++) {
@@ -100,16 +111,29 @@ public class Board extends JPanel implements ActionListener {
             Toolkit.getDefaultToolkit().sync();
         } else if (dots > 0){
             gameOver(g);
+        } else {
+            initialScreen(g);
         }
     }
 
     private void gameOver(Graphics g) {
         String msg = "Game Over";
+        String score = "Score: " + (dots - 3);
         Font small = new Font("Helvetica",  Font.BOLD, 14);
         FontMetrics metr  = getFontMetrics(small);
         g.setColor(Color.white);
         g.setFont(small);
-        g.drawString(msg, (B_WIDTH - metr.stringWidth(msg)) / 2, B_HEIGHT / 2);
+        g.drawString(msg, (B_WIDTH - metr.stringWidth(msg)) / 2, B_HEIGHT / 3);
+        g.drawString(score, (B_WIDTH - metr.stringWidth(score)) / 2, B_HEIGHT / 2);
+    }
+
+    private void initialScreen(Graphics g) {
+        String title = "Snake!";
+        Font titleFont = new Font("Helvetica",  Font.BOLD, 16);
+        FontMetrics metr  = getFontMetrics(titleFont);
+        g.setColor(Color.white);
+        g.setFont(titleFont);
+        g.drawString(title, (B_WIDTH - metr.stringWidth(title)) / 2, B_HEIGHT / 2);
     }
 
     private void checkApple() {
@@ -120,22 +144,25 @@ public class Board extends JPanel implements ActionListener {
     }
 
     private void move()  {
-        for (int z = dots; z > 0; z--) {
-            x[z] = x[(z - 1)];
-            y[z] = y[(z - 1)];
-        }
 
-        if (leftDirection) {
-            x[0] -= DOT_SIZE;
-        }
-        if (rightDirection) {
-            x[0] += DOT_SIZE;
-        }
-        if (upDirection) {
-            y[0] -= DOT_SIZE;
-        }
-        if (downDirection) {
-            y[0] += DOT_SIZE;
+        if (!pause) {
+            for (int z = dots; z > 0; z--) {
+                x[z] = x[(z - 1)];
+                y[z] = y[(z - 1)];
+            }
+
+            if (leftDirection) {
+                x[0] -= DOT_SIZE;
+            }
+            if (rightDirection) {
+                x[0] += DOT_SIZE;
+            }
+            if (upDirection) {
+                y[0] -= DOT_SIZE;
+            }
+            if (downDirection) {
+                y[0] += DOT_SIZE;
+            }
         }
     }
 
@@ -152,7 +179,7 @@ public class Board extends JPanel implements ActionListener {
             inGame = false;
         }
 
-        if (y[0] < 8) {
+        if (y[0] < 0) {
             inGame = false;
         }
 
@@ -167,14 +194,6 @@ public class Board extends JPanel implements ActionListener {
         if(!inGame) {
             timer.stop();
         }
-    }
-
-    private void locateApple()  {
-        int r = (int) (Math.random() * RAND_POS);
-        apple_x = r * DOT_SIZE;
-
-        r = (int) (Math.random() * RAND_POS);
-        apple_y = r *  DOT_SIZE;
     }
 
     @Override
