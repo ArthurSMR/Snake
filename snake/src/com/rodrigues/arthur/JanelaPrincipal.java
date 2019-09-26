@@ -11,16 +11,7 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
     private int B_WIDTH = 300;
     private int B_HEIGHT = 300;
 
-    private JPanel painelStatus;
-    private JLabel labelStatus;
-    private String titulo;
-
-    private Snake snake;
-    private Apple apple;
     private Board board;
-
-    private Timer timer;
-    private final int  DELAY = 140;
 
 
     private JMenuBar menuBar;
@@ -36,17 +27,18 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
         configuraJanela();
         criaAdicionaMenu();
         adicionaOuvinteMenus(this);
-        inicializaAdicionaComponentes();
     }
 
-     /**
-      *
-      * */
-
+    /**
+     * Este método inicia o jogo chamando o método initGame() da classe Board
+     */
     void inicia() {
         board.initGame();
     }
 
+    /**
+     * Este método cria e adiciona o menu e seus itens
+     */
     private void criaAdicionaMenu() {
         menuIniciar = new JMenu("Game");
 
@@ -84,27 +76,12 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    private void inicializaAdicionaComponentes() {
 
-        // area para 'barras de status'
-        this.painelStatus = new JPanel();
-
-        // texto inicial da  barra
-        this.labelStatus  = new JLabel(this.titulo);
-    }
-
-
-    public void turnOnTimer() {
-
-        //  we use a timer on a timer to call action perfomed  method fixed delay
-        timer = new Timer(DELAY, this);
-        timer.start();
-    }
-
-    public void turnOffTimer() {
-        timer.stop();
-    }
-
+    /**
+     * @param ouvinte
+     *
+     * Este método adiciona um listener para escutar as ações do menu
+     */
     void adicionaOuvinteMenus(ActionListener ouvinte) {
         for (Component menuPrincipal : this.getJMenuBar().getComponents()) {
             if (menuPrincipal  instanceof JMenu) {
@@ -113,6 +90,12 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
         }
     }
 
+    /**
+     * @param ouvinte
+     * @param menuPrincipal
+     *
+     * Este método adiciona um listener para escutar as ações dos itens do menu
+     */
     private  void adicionaOuvinteItemMenu(ActionListener ouvinte, JMenu menuPrincipal) {
         for (Component alvo : menuPrincipal.getMenuComponents()) {
             if(alvo instanceof JMenuItem) {
@@ -130,14 +113,6 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
         } else if (e.getSource() == menuItemHelp) {
             JOptionPane.showMessageDialog(null, "Use keyboard arrows to play the game.");
         }
-    }
-
-    public int getB_WIDTH() {
-        return B_WIDTH;
-    }
-
-    public int getB_HEIGHT() {
-        return B_HEIGHT;
     }
 }
 

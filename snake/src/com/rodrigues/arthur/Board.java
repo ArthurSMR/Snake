@@ -31,6 +31,9 @@ public class Board extends JPanel implements ActionListener {
         initBoard();
     }
 
+    /**
+     * Este método configura e inicia o tabuleiro
+     */
     private void initBoard() {
         addKeyListener(new TAdapter());
         setBackground(Color.black);
@@ -40,11 +43,17 @@ public class Board extends JPanel implements ActionListener {
         setVisible(true);
     }
 
+    /**
+     * Este método inicializa a cobra e a maçã
+     */
     private void loadAssets()  {
         apple =  new Apple();
         snake = new Snake();
     }
 
+    /**
+     * Este método pausa e despause o jogo
+     */
     public void pauseResumeGame() {
         if (pause) {
             pause = false;
@@ -54,18 +63,23 @@ public class Board extends JPanel implements ActionListener {
 
     }
 
+    /**
+     * Este método inicia o jogo
+     */
     public void initGame() {
-        inGame = true;
-        pause = false;
-        snake.setDots(3);
+        if (!inGame) {
+            inGame = true;
+            pause = false;
+            snake.setDots(3);
 
-        snake.setLocationDots();
+            snake.setLocationDots();
 
-        apple.locateApple();
+            apple.locateApple();
 
-        //  we use a timer on a timer to call action perfomed  method fixed delay
-        timer = new Timer(DELAY, this);
-        timer.start();
+            //  we use a timer on a timer to call action perfomed  method fixed delay
+            timer = new Timer(DELAY, this);
+            timer.start();
+        }
     }
 
     @Override
@@ -74,6 +88,12 @@ public class Board extends JPanel implements ActionListener {
         doDrawing(g);
     }
 
+    /**
+     * @param g
+     * Este método gerencia o que sera renderizado em tela alternando entre tela de entrada,
+     * o jogo em si e a tela de fim de jogo
+     *
+     */
     private void doDrawing(Graphics g) {
         if (inGame) {
             g.drawImage(apple.getAppleImage(), apple.getApple_x(),  apple.getApple_y(), this);
@@ -87,6 +107,11 @@ public class Board extends JPanel implements ActionListener {
         }
     }
 
+    /**
+     * @param g
+     *
+     * Este método renderiza a tela de fim de jogo
+     */
     private void gameOver(Graphics g) {
         String msg = "Game Over";
         String score = "Score: " + (snake.getDots() - 3);
@@ -98,6 +123,11 @@ public class Board extends JPanel implements ActionListener {
         g.drawString(score, (B_WIDTH - metr.stringWidth(score)) / 2, B_HEIGHT / 2);
     }
 
+    /**
+     * @param g
+     *
+     * Este método renderiza a tela de entrada do jogo
+     */
     private void initialScreen(Graphics g) {
         String title = "Snake!";
         Font titleFont = new Font("Helvetica",  Font.BOLD, 16);
@@ -107,6 +137,9 @@ public class Board extends JPanel implements ActionListener {
         g.drawString(title, (B_WIDTH - metr.stringWidth(title)) / 2, B_HEIGHT / 2);
     }
 
+    /**
+     * Este método verifica se a colisão entre a cobra e a maçã
+     */
     private void checkApple() {
         if ((snake.getHeadPositionX() == apple.getApple_x()) && (snake.getHeadPositionY()  == apple.getApple_y())) {
             snake.incrementDots();

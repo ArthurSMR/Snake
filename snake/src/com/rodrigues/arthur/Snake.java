@@ -29,6 +29,9 @@ public class Snake implements ActionListener {
         loadHeadAndDotImages();
     }
 
+    /**
+     * Este método carrega as imagens do corpo e da cabeça da cobra
+     */
     public void loadHeadAndDotImages() {
         ImageIcon iid = new ImageIcon(getClass().getResource("/res/dot.png"));
         ball  = iid.getImage();
@@ -37,7 +40,9 @@ public class Snake implements ActionListener {
         head  = iih.getImage();
     }
 
-    /* Esse método fará com que as Dots fiquem organizadas em filas */
+    /**
+     * Este método organiza os 'Dots' em filas
+     */
     public void setLocationDots() {
 
         for(int z = 0; z < dots; z++) {
@@ -46,6 +51,9 @@ public class Snake implements ActionListener {
         }
     }
 
+    /**
+     * Este método faz o cálculo de movimentação da cobra
+     */
     public void move() {
         for (int z = dots; z > 0; z--) {
             x[z] = x[(z - 1)];
@@ -66,6 +74,12 @@ public class Snake implements ActionListener {
         }
     }
 
+    /**
+     * @param g
+     * @param board
+     *
+     * Este método desenha a cobra na tela
+     */
     public void draw(Graphics g, ImageObserver board) {
         for  (int z = 0; z < dots; z++) {
             if (z == 0) {
@@ -76,6 +90,13 @@ public class Snake implements ActionListener {
         }
     }
 
+    /**
+     * @param widthLimit
+     * @param heightLimit
+     * @return Boolean - responde se houve colisão
+     *
+     * Este método verifica a colisão
+     */
     public boolean checkCollision(int widthLimit, int heightLimit) {
 
         for (int z = dots;   z > 0; z--) {
@@ -104,6 +125,9 @@ public class Snake implements ActionListener {
         return true;
     }
 
+    /**
+     * Este método incrementa a quantidade de 'Dots' da cobra
+     */
     public void incrementDots() { dots += 1; }
 
     public int getDots() {
@@ -170,10 +194,20 @@ public class Snake implements ActionListener {
         this.downDirection = downDirection;
     }
 
+    /**
+     * @return int - posição X da cabeça da cobra
+     *
+     * Este método retorna a posição X da cabeça da cobra
+     */
     public int getHeadPositionX() {
         return x[0];
     }
 
+    /**
+     * @return int - posição Y da cabeça da cobra
+     *
+     * Este método retorna a posição Y da cabeça da cobra
+     */
     public int getHeadPositionY() {
         return y[0];
     }

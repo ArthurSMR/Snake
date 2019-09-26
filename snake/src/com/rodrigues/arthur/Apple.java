@@ -17,11 +17,17 @@ public class Apple {
         loadImage();
     }
 
+    /**
+     * Este método carrega a imagem da maçã
+     */
     public void loadImage() {
         ImageIcon iia = new ImageIcon(getClass().getResource("/res/apple.png"));
         appleImage  = iia.getImage();
     }
 
+    /**
+     * Este método gera uma nova posição aleatória para a maçã
+     */
     public void locateApple() {
 
         int r = (int) (Math.random() * RAND_POS);
@@ -30,14 +36,6 @@ public class Apple {
         r = (int) (Math.random() * RAND_POS);
         apple_y = r *  snake.getDOT_SIZE();
 
-    }
-
-    public void checkIfSnakeGetApple() {
-
-        if ((snake.x[0] == apple_x) && (snake.y[0]  == this.apple_y)) {
-            snake.setDots(snake.getDots() + 1);
-            locateApple();
-        }
     }
 
     // GETTERs and SETTERs
